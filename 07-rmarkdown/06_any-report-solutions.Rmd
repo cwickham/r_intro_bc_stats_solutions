@@ -9,7 +9,7 @@ params:
     input: select
     value: "Canada"
     label: "Country"
-    choices: !r levels(gapminder$country)
+    choices: !r levels(gapminder::gapminder$country)
 ---
 
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
