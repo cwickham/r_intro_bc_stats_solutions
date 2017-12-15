@@ -1,6 +1,10 @@
 ---
 title: "Getting Started with R and RStudio (solutions)"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
 
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
@@ -22,6 +26,7 @@ ggplot(data = mpg) +
 
 Add a new code chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd/Ctrl+Option+I*.
 
+Here's a not very interesting chunk of R code:
 ```{r}
 2 + 2
 ```
@@ -42,6 +47,8 @@ And the code in this chunk?
 four_cyls <- filter(mtcars, cyl == 4)
 ```
 
+The difference in the code is `four_cyls <- `.  In the second chunk, rather than returning the output of `filter(mtcars, cyl == 4)`, the output is stored (or "assigned") to a variable called `four_cyls`.  `<-` is the assignment operator, it assigns the output of the right hand side into a variable with the name of the left hand side. 
+
 ## Function syntax
 
 Take a look at this code: 
@@ -55,16 +62,26 @@ mean(heights, na.rm = TRUE)
 2. What arguments do they take?
 3. What values are being passed as which arguments?
 
+In the first line, the function `pull()` is being called where the `.data` argument takes the value `starwars` and the `var` argument takes the value `height`.
+
+In the second line, the function `mean()` is being called where the first argument takes the value `heights`.  You would have to look at the help for `mean()`, (i.e. `?mean`) to find out that this first argument is called `x`.  The other argument being provided is `na.rm`, set to the value `TRUE`.
+
+Can you guess what the code does?  `starwars` is a dataset that comes with the `dplyr` package, try `?starwars` to learn more about it.  The code chunk above pulls out the heights of the starwars characters in that data, then finds the mean of those heights ignoring any missing values.  
+
 ## Syntax gone wrong
 
-```{r, error=TRUE}
-sd(pull(.data = starwars, var = weight) 
-```
+1. There was missing closing parenthesis `)`.
+    ```{r, error=TRUE}
+    sd(pull(.data = starwars, var = mass))
+    ```
+    Notice how here we have one function, `pull()` nested inside another one, `sd()`.  The result of `pull(.data = starwars, var = weight)` is passed into `sd()` as the first argument.
 
-```{r, error=TRUE}
-my_name <- "Charlotte'
-```
+2. The string was closed with a single quote `'` rather than a double quote `"`
+    ```{r, error=TRUE}
+    my_name <- "Charlotte"
+    ```
 
-```{r, error=TRUE}
-pull(.data = "starwars", var = height)
-```
+3. The `.data` argument to `pull()` wasn't expecting a character string, remove the quotes around `starwars` to fix the problem.
+    ```{r, error=TRUE}
+    pull(.data = starwars, var = height)
+    ```
