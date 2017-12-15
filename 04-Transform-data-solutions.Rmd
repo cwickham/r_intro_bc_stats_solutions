@@ -1,7 +1,14 @@
 ---
 title: "Transform Data (solutions)"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
+
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
 
 ```{r setup}
 library(tidyverse)
@@ -114,11 +121,6 @@ gapminder %>%
     med_life_exp = median(lifeExp))
 ```
 
-
-```{r}
-gapminder %>% 
-  group_by(continent)
-```
 ## Your Turn 6
 
 Find the median life expectancy by continent

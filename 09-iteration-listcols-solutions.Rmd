@@ -1,6 +1,8 @@
 ---
 title: "Iteration and List Columns (solutions)"
 output:
+  github_document: 
+    df_print: tibble
   html_document:
     df_print: paged
 ---
@@ -32,12 +34,14 @@ three_models <- list(
 ## Your turn 1
 
 Run the setup chunk.
-Look for  three_models in your environment.  Click on it to open a Viewer.
+Look for `three_models` in your environment.  Click on it to open a Viewer.
 What kind of object is this?  Does its contents look familiar?
 
 ```{r}
-
+View(three_models)
 ```
+
+`three_models` is a list!  It has three elements, each one is the output from `lm()`, i.e. a regression model object.
 
 ## Your Turn 2
 
@@ -45,7 +49,7 @@ Do it for one element: add some code to tidy nz_model.
 
 ```{r}
 nz_model <- three_models[[1]]
-
+nz_model %>% tidy()
 ```
 
 ## Your turn 3
@@ -53,8 +57,9 @@ nz_model <- three_models[[1]]
 Run the code, what kind of object is `tidy_models`?
 
 ```{r}
-tidy_models <- map(three_models, ~ tidy(.x))
+tidy_models <- map(three_models, ~ .x %>% tidy())
 tidy_models
+View(tidy_models)
 ```
 
 ## Your turn 4
@@ -82,6 +87,7 @@ Use the object explorer (i.e. the magnifying glass in the Environment pane)mto t
 
 ```{r}
 data_column <- gapminder_nested %>% pull(data) 
+View(data_column)
 ```
 
 Following along in slides:
@@ -123,8 +129,10 @@ Write code to:
 
 ```{r}
 gapminder_nested <- gapminder_nested %>% 
-  mutate(slope = map_dbl(model, 
-                        ~ tidy(.x) %>% filter(term == "year") %>% pull(estimate)))
+  mutate(slope = map_dbl(model, ~ .x %>% 
+                                  tidy() %>% 
+                                  filter(term == "year") %>% 
+                                  pull(estimate)))
 gapminder_nested %>% 
   filter(slope > 0.60) %>%
   unnest(data) %>%

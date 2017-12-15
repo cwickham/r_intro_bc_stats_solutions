@@ -1,25 +1,28 @@
----
-title: "Visualizing New House Price Index"
-output:
-  github_document: 
-    df_print: tibble
-  html_document:
-    df_print: paged
----
+Visualizing New House Price Index
+================
 
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
-
-```{r setup}
+``` r
 library(tidyverse)
 housing <- read_csv("data/housing_bc.csv")
+```
 
+    ## Parsed with column specification:
+    ## cols(
+    ##   geography = col_character(),
+    ##   date = col_datetime(format = ""),
+    ##   total = col_double()
+    ## )
+
+``` r
 diamonds_plot <- ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity)) 
 ```
 
-## Your turn 1
+Your turn 1
+-----------
 
-```{r}
+``` r
 basic_plot <- housing %>%
   filter(geography %in% c("Canada", "British Columbia (12)")) %>%
   ggplot(mapping = aes(x = date, y = total)) +
@@ -27,11 +30,14 @@ basic_plot <- housing %>%
 basic_plot
 ```
 
-## Your turn 2
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
-I've applied the diamond labels to the housing price plot.  Edit the code to add appropriate labelling to the house price plot.
+Your turn 2
+-----------
 
-```{r}
+I've applied the diamond labels to the housing price plot. Edit the code to add appropriate labelling to the house price plot.
+
+``` r
 basic_plot + 
   labs(title = "New Housing Price Index, Canada and B.C.",
        subtitle = "Total (house and land)",
@@ -42,39 +48,49 @@ basic_plot +
   )
 ```
 
-## Your turn 3
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
-Add a theme to basic_plot. Try a few and pick one you like.
+Your turn 3
+-----------
 
-```{r}
+Add a theme to basic\_plot. Try a few and pick one you like.
+
+``` r
 basic_plot + theme_classic()
 ```
 
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
-## Your turn 4
+Your turn 4
+-----------
 
-Add a brewer scale to the basic_plot.
+Add a brewer scale to the basic\_plot.
 
-```{r}
+``` r
 basic_plot + scale_color_brewer()
 ```
 
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
-## Your turn 5
+Your turn 5
+-----------
 
 Choose a better color palette for the brewer scale.
 
-```{r}
+``` r
 basic_plot + scale_color_brewer(palette = "Set1")
 ```
 
-## Your turn 6
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
-Put the labels, theme and scale changes together for basic_plot.
+Your turn 6
+-----------
+
+Put the labels, theme and scale changes together for basic\_plot.
 
 What is left to change?
 
-```{r}
+``` r
 basic_plot +
   labs(title = "New Housing Price Index, Canada and B.C.",
        subtitle = "Total (house and land)",
@@ -87,10 +103,12 @@ basic_plot +
   scale_color_brewer(palette = "Set1")
 ```
 
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
-## Final plot
+Final plot
+----------
 
-```{r}
+``` r
 basic_plot +
   labs(title = "New Housing Price Index, Canada and B.C.",
        subtitle = "Total (house and land)",
@@ -107,12 +125,13 @@ basic_plot +
   theme(legend.position = c(0.75, 0.2))
 ```
 
-## Takeaways
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
-Every visual element on a ggplot plot can be controlled.  The most frequent changes you want to make are to:
+Takeaways
+---------
 
-* Labels, `+ labs()`
-* Themes, `+ theme_bw()`
-* Scales `+ scale_*_*()`
+Every visual element on a ggplot plot can be controlled. The most frequent changes you want to make are to:
 
-
+-   Labels, `+ labs()`
+-   Themes, `+ theme_bw()`
+-   Scales `+ scale_*_*()`

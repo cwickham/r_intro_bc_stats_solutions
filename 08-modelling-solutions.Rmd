@@ -1,6 +1,10 @@
 ---
 title: "Modelling & Broom (solutions)"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
 
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->

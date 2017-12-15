@@ -1,7 +1,14 @@
 ---
 title: "Tidy Data (solutions)"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
+
+<!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
+
 
 ```{r setup}
 library(tidyverse)
@@ -90,6 +97,22 @@ bp_systolic2 %>%
 
 On a sheet of paper, draw how the cases data set would look if it had the same values grouped into three columns: **country**, **year**, **n**
 
+-----------------------------
+   country     year   cases  
+------------- ------ --------
+ Afghanistan   1999    745   
+
+ Afghanistan   2000    2666  
+
+   Brazil      1999   37737  
+
+   Brazil      2000   80488  
+
+    China      1999   212258 
+
+    China      2000   213766 
+-----------------------------
+
 ## Your Turn 4
 
 Use `gather()` to reorganize `table4a` into three columns: **country**, **year**, and **cases**.
@@ -103,7 +126,17 @@ table4a %>%
 
 ## Your Turn 5
 
-On a sheet of paper, draw how this data set would look if it had the same values grouped into three columns: **city**, **large**, **small**
+On a sheet of paper, draw how `pollution` would look if it had the same values grouped into three columns: **city**, **large**, **small**
+
+--------------------------
+   city     large   small 
+---------- ------- -------
+ Beijing     121     121  
+
+  London     22      16   
+
+ New York    23      14   
+--------------------------
 
 ## Your Turn 6
 
