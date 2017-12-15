@@ -1,6 +1,10 @@
 ---
 title: "Visualizing New House Price Index"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup}
@@ -26,5 +30,9 @@ Write code to imitate the plot at: https://www2.gov.bc.ca/gov/content/data/stati
 
 
 ```{r}
-ggplot(housing)
+ggplot(data = housing) +
+  geom_line(aes(x = date, y = total, color = geography))
+  
 ```
+
+The plot still needs some polishing, we'll work on that in 06-Polishing-plots.

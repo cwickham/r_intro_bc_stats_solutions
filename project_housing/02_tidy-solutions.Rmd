@@ -27,3 +27,43 @@ housing_raw
 
 Try to tidy `housing_raw` don't forget your cheatsheet.
 
+```{r}
+housing_reshaped <- housing_raw %>% 
+  gather(key = "time", value = "hpi", 
+    -Geography, -`New housing price indexes`) %>%
+  spread(`New housing price indexes`, hpi) 
+
+housing_reshaped
+```
+
+Data looks to be in the right shape, but plotting shows some problems:
+
+```{r}
+ggplot(housing_reshaped) +
+  geom_line(aes(x = time, y = `Total (house and land)`, color = Geography))
+```
+
+Problems:
+
+* `time` is a character string, rather than a date
+* `Geography` still contatins too many regions
+* and it's painful to refer to a column with spaces in it.
+
+Fixes:
+```{r}
+housing_bc <- housing_reshaped %>%
+  mutate(date = lubridate::parse_date_time(time, order = "my")) %>%
+  filter(Geography %in% c("Canada", "British Columbia (12)")) %>%
+  rename(total = "Total (house and land)",
+         land = "Land only",
+         house = "House only",
+         geography = Geography)
+```
+
+
+Then we can plot:
+```{r}
+ggplot(housing_bc) +
+  geom_line(aes(x = date, y = total, color = geography))
+```
+
