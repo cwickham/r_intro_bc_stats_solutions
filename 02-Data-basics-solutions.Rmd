@@ -1,6 +1,10 @@
 ---
 title: "Data Basics (solutions)"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
 
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
@@ -28,9 +32,11 @@ Take a look at these two datasets, by typing their names into the console:
 * quakes
 * mpg
 
+Printing a data frame in R will print all columns and all the rows (until meeting some maximum printing value).  In contrast, printing a tibble will print only as many columns as will fit on your screen and only 10 rows of the the data.  Tibbles are a special type of data frame and have a few other special behaviours too.  In this example, mpg is a tibble and quakes is a data frame.
+
 ## Your turn 2
 
-Try running each line one by one, with Cmd/Ctrl + r:
+Try running each line one by one, with Cmd/Ctrl + r.  What do they do?
 
 ```{r}
 dim(x = mpg)     
@@ -39,18 +45,27 @@ glimpse(x = mpg)
 View(x = mpg)  
 ```
 
+* `dim()` prints the dimensions, number of observations then number of variables
+* `names()` prints the column names
+* `glimpse()` gives an overview of the data, including all variable names, their types, and the first few entries.
+* `View()` opens up a GUI viewer.
+
 ## Your turn 3
 
 How many rows of data are in quakes?
 
+You could use `dim()`, `glimpse()` or `View()`:
 ```{r}
+dim(quakes)
 
+# or more specifically
+nrow(quakes)
 ```
 
 What are the names of the variables in quakes?
 
 ```{r}
-
+names(quakes)
 ```
 
 ## Your turn 4
@@ -60,6 +75,8 @@ Run the chunk to get help on `mpg`. What is this data?
 ?mpg
 ```
 
+> "This dataset contains a subset of the fuel economy data that the EPA makes available on http://fueleconomy.gov. It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car."
+
 # Vector Data
 
 ## Your turn 5
@@ -67,8 +84,11 @@ Run the chunk to get help on `mpg`. What is this data?
 Take another look at mpg.  What kind of data is in each column?
 
 ```{r}
-mpg
+mpg # and view in the notebook
+glimpse(mpg)
 ```
+
+There are character, double and integer variables.
 
 # Importing Data
 
@@ -76,12 +96,27 @@ mpg
 
 Take a look in the data/ directory in the project folder.
 
-Try reading in each file with the appropriate function.
+Try reading in each of:
+
+* `deaths.xls`
+* `nimbus.csv`
+* `iris.sav`
+
 
 ```{r}
-
+deaths <- read_excel("data/deaths.xls")
+deaths
 ```
 
+```{r}
+iris <- read_spss("data/iris.sav")
+iris
+```
+
+```{r}
+nimbus <- read_csv("data/nimbus.csv")
+nimbus
+```
 
 ## Your Turn 7
 
@@ -90,6 +125,21 @@ Can you see what is wrong with the Excel file when it is imported?
 Scan the Arguments section of ?read_excel, can you find an argument that might help? Try it!
 
 ```{r}
-?read_excel
+deaths
 ```
 
+Looks like the first few rows don't contain data, but some multi-column notations.  There's also some at the end.
+
+One solution is to use the arguments `skip` and `n_max`:
+```{r}
+deaths <- read_excel("data/deaths.xls", skip = 4, n_max = 10)
+deaths
+```
+ 
+ Another is to use the `range` argument:
+```{r}
+deaths <- read_excel("data/deaths.xls", range = "A5:F15")
+deaths
+
+```
+ 
