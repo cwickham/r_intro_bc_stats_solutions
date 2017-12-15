@@ -54,7 +54,10 @@ quakes
 Your turn 1
 -----------
 
-Take a look at these two datasets, by typing their names into the console: \* quakes \* mpg
+Take a look at these two datasets, by typing their names into the console:
+
+-   quakes
+-   mpg
 
 Printing a data frame in R will print all columns and all the rows (until meeting some maximum printing value). In contrast, printing a tibble will print only as many columns as will fit on your screen and only 10 rows of the the data. Tibbles are a special type of data frame and have a few other special behaviours too. In this example, mpg is a tibble and quakes is a data frame.
 
