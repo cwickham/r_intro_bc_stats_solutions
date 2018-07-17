@@ -1,4 +1,4 @@
-This is the repo for the solutions to ["An introduction to R with the `tidyverse`"](https://github.com/cwickham/r_intro_bc_stats) developed for [BC Stats](https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats) and delivered Dec 2017.
+This is the repo for the solutions to ["An introduction to R with the `tidyverse`"](https://github.com/cwickham/r_intro_bc_stats/tree/v1.0) developed for [BC Stats](https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats) and delivered Dec 2017.
 
 Download the whole repository to explore the solutions in RStudio, or visit the .md files on github to see the solutions.
 
