@@ -4,6 +4,20 @@ Transform Data (solutions)
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
 ``` r
 library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──
+
+    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 library(gapminder)
 
 # Toy dataset to use
@@ -26,18 +40,18 @@ gapminder
 ```
 
     ## # A tibble: 1,704 x 6
-    ##        country continent  year lifeExp      pop gdpPercap
-    ##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
-    ##  1 Afghanistan      Asia  1952  28.801  8425333  779.4453
-    ##  2 Afghanistan      Asia  1957  30.332  9240934  820.8530
-    ##  3 Afghanistan      Asia  1962  31.997 10267083  853.1007
-    ##  4 Afghanistan      Asia  1967  34.020 11537966  836.1971
-    ##  5 Afghanistan      Asia  1972  36.088 13079460  739.9811
-    ##  6 Afghanistan      Asia  1977  38.438 14880372  786.1134
-    ##  7 Afghanistan      Asia  1982  39.854 12881816  978.0114
-    ##  8 Afghanistan      Asia  1987  40.822 13867957  852.3959
-    ##  9 Afghanistan      Asia  1992  41.674 16317921  649.3414
-    ## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414
+    ##    country     continent  year lifeExp      pop gdpPercap
+    ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+    ##  1 Afghanistan Asia       1952    28.8  8425333      779.
+    ##  2 Afghanistan Asia       1957    30.3  9240934      821.
+    ##  3 Afghanistan Asia       1962    32.0 10267083      853.
+    ##  4 Afghanistan Asia       1967    34.0 11537966      836.
+    ##  5 Afghanistan Asia       1972    36.1 13079460      740.
+    ##  6 Afghanistan Asia       1977    38.4 14880372      786.
+    ##  7 Afghanistan Asia       1982    39.9 12881816      978.
+    ##  8 Afghanistan Asia       1987    40.8 13867957      852.
+    ##  9 Afghanistan Asia       1992    41.7 16317921      649.
+    ## 10 Afghanistan Asia       1997    41.8 22227415      635.
     ## # ... with 1,694 more rows
 
 Your Turn 1
@@ -56,19 +70,19 @@ filter(gapminder, country == "Canada")
 
     ## # A tibble: 12 x 6
     ##    country continent  year lifeExp      pop gdpPercap
-    ##     <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
-    ##  1  Canada  Americas  1952  68.750 14785584  11367.16
-    ##  2  Canada  Americas  1957  69.960 17010154  12489.95
-    ##  3  Canada  Americas  1962  71.300 18985849  13462.49
-    ##  4  Canada  Americas  1967  72.130 20819767  16076.59
-    ##  5  Canada  Americas  1972  72.880 22284500  18970.57
-    ##  6  Canada  Americas  1977  74.210 23796400  22090.88
-    ##  7  Canada  Americas  1982  75.760 25201900  22898.79
-    ##  8  Canada  Americas  1987  76.860 26549700  26626.52
-    ##  9  Canada  Americas  1992  77.950 28523502  26342.88
-    ## 10  Canada  Americas  1997  78.610 30305843  28954.93
-    ## 11  Canada  Americas  2002  79.770 31902268  33328.97
-    ## 12  Canada  Americas  2007  80.653 33390141  36319.24
+    ##    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+    ##  1 Canada  Americas   1952    68.8 14785584    11367.
+    ##  2 Canada  Americas   1957    70.0 17010154    12490.
+    ##  3 Canada  Americas   1962    71.3 18985849    13462.
+    ##  4 Canada  Americas   1967    72.1 20819767    16077.
+    ##  5 Canada  Americas   1972    72.9 22284500    18971.
+    ##  6 Canada  Americas   1977    74.2 23796400    22091.
+    ##  7 Canada  Americas   1982    75.8 25201900    22899.
+    ##  8 Canada  Americas   1987    76.9 26549700    26627.
+    ##  9 Canada  Americas   1992    78.0 28523502    26343.
+    ## 10 Canada  Americas   1997    78.6 30305843    28955.
+    ## 11 Canada  Americas   2002    79.8 31902268    33329.
+    ## 12 Canada  Americas   2007    80.7 33390141    36319.
 
 All data for countries in Oceania
 
@@ -77,18 +91,18 @@ filter(gapminder, continent == "Oceania")
 ```
 
     ## # A tibble: 24 x 6
-    ##      country continent  year lifeExp      pop gdpPercap
-    ##       <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
-    ##  1 Australia   Oceania  1952   69.12  8691212  10039.60
-    ##  2 Australia   Oceania  1957   70.33  9712569  10949.65
-    ##  3 Australia   Oceania  1962   70.93 10794968  12217.23
-    ##  4 Australia   Oceania  1967   71.10 11872264  14526.12
-    ##  5 Australia   Oceania  1972   71.93 13177000  16788.63
-    ##  6 Australia   Oceania  1977   73.49 14074100  18334.20
-    ##  7 Australia   Oceania  1982   74.74 15184200  19477.01
-    ##  8 Australia   Oceania  1987   76.32 16257249  21888.89
-    ##  9 Australia   Oceania  1992   77.56 17481977  23424.77
-    ## 10 Australia   Oceania  1997   78.83 18565243  26997.94
+    ##    country   continent  year lifeExp      pop gdpPercap
+    ##    <fct>     <fct>     <int>   <dbl>    <int>     <dbl>
+    ##  1 Australia Oceania    1952    69.1  8691212    10040.
+    ##  2 Australia Oceania    1957    70.3  9712569    10950.
+    ##  3 Australia Oceania    1962    70.9 10794968    12217.
+    ##  4 Australia Oceania    1967    71.1 11872264    14526.
+    ##  5 Australia Oceania    1972    71.9 13177000    16789.
+    ##  6 Australia Oceania    1977    73.5 14074100    18334.
+    ##  7 Australia Oceania    1982    74.7 15184200    19477.
+    ##  8 Australia Oceania    1987    76.3 16257249    21889.
+    ##  9 Australia Oceania    1992    77.6 17481977    23425.
+    ## 10 Australia Oceania    1997    78.8 18565243    26998.
     ## # ... with 14 more rows
 
 Rows where the life expectancy is greater than 82
@@ -98,10 +112,10 @@ filter(gapminder, lifeExp > 82)
 ```
 
     ## # A tibble: 2 x 6
-    ##            country continent  year lifeExp       pop gdpPercap
-    ##             <fctr>    <fctr> <int>   <dbl>     <int>     <dbl>
-    ## 1 Hong Kong, China      Asia  2007  82.208   6980412  39724.98
-    ## 2            Japan      Asia  2007  82.603 127467972  31656.07
+    ##   country          continent  year lifeExp       pop gdpPercap
+    ##   <fct>            <fct>     <int>   <dbl>     <int>     <dbl>
+    ## 1 Hong Kong, China Asia       2007    82.2   6980412    39725.
+    ## 2 Japan            Asia       2007    82.6 127467972    31656.
 
 Your Turn 2
 -----------
@@ -116,11 +130,11 @@ filter(gapminder, country == "Canada", year < 1970)
 
     ## # A tibble: 4 x 6
     ##   country continent  year lifeExp      pop gdpPercap
-    ##    <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
-    ## 1  Canada  Americas  1952   68.75 14785584  11367.16
-    ## 2  Canada  Americas  1957   69.96 17010154  12489.95
-    ## 3  Canada  Americas  1962   71.30 18985849  13462.49
-    ## 4  Canada  Americas  1967   72.13 20819767  16076.59
+    ##   <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
+    ## 1 Canada  Americas   1952    68.8 14785584    11367.
+    ## 2 Canada  Americas   1957    70.0 17010154    12490.
+    ## 3 Canada  Americas   1962    71.3 18985849    13462.
+    ## 4 Canada  Americas   1967    72.1 20819767    16077.
 
 -   Countries where life expectancy in 2007 is below 50
 
@@ -129,27 +143,27 @@ filter(gapminder, year == 2007, lifeExp < 50)
 ```
 
     ## # A tibble: 19 x 6
-    ##                     country continent  year lifeExp       pop gdpPercap
-    ##                      <fctr>    <fctr> <int>   <dbl>     <int>     <dbl>
-    ##  1              Afghanistan      Asia  2007  43.828  31889923  974.5803
-    ##  2                   Angola    Africa  2007  42.731  12420476 4797.2313
-    ##  3                  Burundi    Africa  2007  49.580   8390505  430.0707
-    ##  4 Central African Republic    Africa  2007  44.741   4369038  706.0165
-    ##  5         Congo, Dem. Rep.    Africa  2007  46.462  64606759  277.5519
-    ##  6            Cote d'Ivoire    Africa  2007  48.328  18013409 1544.7501
-    ##  7            Guinea-Bissau    Africa  2007  46.388   1472041  579.2317
-    ##  8                  Lesotho    Africa  2007  42.592   2012649 1569.3314
-    ##  9                  Liberia    Africa  2007  45.678   3193942  414.5073
-    ## 10                   Malawi    Africa  2007  48.303  13327079  759.3499
-    ## 11               Mozambique    Africa  2007  42.082  19951656  823.6856
-    ## 12                  Nigeria    Africa  2007  46.859 135031164 2013.9773
-    ## 13                   Rwanda    Africa  2007  46.242   8860588  863.0885
-    ## 14             Sierra Leone    Africa  2007  42.568   6144562  862.5408
-    ## 15                  Somalia    Africa  2007  48.159   9118773  926.1411
-    ## 16             South Africa    Africa  2007  49.339  43997828 9269.6578
-    ## 17                Swaziland    Africa  2007  39.613   1133066 4513.4806
-    ## 18                   Zambia    Africa  2007  42.384  11746035 1271.2116
-    ## 19                 Zimbabwe    Africa  2007  43.487  12311143  469.7093
+    ##    country                  continent  year lifeExp       pop gdpPercap
+    ##    <fct>                    <fct>     <int>   <dbl>     <int>     <dbl>
+    ##  1 Afghanistan              Asia       2007    43.8  31889923      975.
+    ##  2 Angola                   Africa     2007    42.7  12420476     4797.
+    ##  3 Burundi                  Africa     2007    49.6   8390505      430.
+    ##  4 Central African Republic Africa     2007    44.7   4369038      706.
+    ##  5 Congo, Dem. Rep.         Africa     2007    46.5  64606759      278.
+    ##  6 Cote d'Ivoire            Africa     2007    48.3  18013409     1545.
+    ##  7 Guinea-Bissau            Africa     2007    46.4   1472041      579.
+    ##  8 Lesotho                  Africa     2007    42.6   2012649     1569.
+    ##  9 Liberia                  Africa     2007    45.7   3193942      415.
+    ## 10 Malawi                   Africa     2007    48.3  13327079      759.
+    ## 11 Mozambique               Africa     2007    42.1  19951656      824.
+    ## 12 Nigeria                  Africa     2007    46.9 135031164     2014.
+    ## 13 Rwanda                   Africa     2007    46.2   8860588      863.
+    ## 14 Sierra Leone             Africa     2007    42.6   6144562      863.
+    ## 15 Somalia                  Africa     2007    48.2   9118773      926.
+    ## 16 South Africa             Africa     2007    49.3  43997828     9270.
+    ## 17 Swaziland                Africa     2007    39.6   1133066     4513.
+    ## 18 Zambia                   Africa     2007    42.4  11746035     1271.
+    ## 19 Zimbabwe                 Africa     2007    43.5  12311143      470.
 
 -   Countries where life expectancy in 2007 is below 50, and are not in Africa.
 
@@ -158,9 +172,9 @@ filter(gapminder, year == 2007, lifeExp < 50, !(continent == "Africa"))
 ```
 
     ## # A tibble: 1 x 6
-    ##       country continent  year lifeExp      pop gdpPercap
-    ##        <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>
-    ## 1 Afghanistan      Asia  2007  43.828 31889923  974.5803
+    ##   country     continent  year lifeExp      pop gdpPercap
+    ##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+    ## 1 Afghanistan Asia       2007    43.8 31889923      975.
 
 Your Turn 3
 -----------
@@ -177,18 +191,18 @@ mutate(gapminder,
 ```
 
     ## # A tibble: 1,704 x 8
-    ##        country continent  year lifeExp      pop gdpPercap africa rank_pop
-    ##         <fctr>    <fctr> <int>   <dbl>    <int>     <dbl>  <lgl>    <int>
-    ##  1 Afghanistan      Asia  1952  28.801  8425333  779.4453  FALSE      762
-    ##  2 Afghanistan      Asia  1957  30.332  9240934  820.8530  FALSE      706
-    ##  3 Afghanistan      Asia  1962  31.997 10267083  853.1007  FALSE      638
-    ##  4 Afghanistan      Asia  1967  34.020 11537966  836.1971  FALSE      576
-    ##  5 Afghanistan      Asia  1972  36.088 13079460  739.9811  FALSE      536
-    ##  6 Afghanistan      Asia  1977  38.438 14880372  786.1134  FALSE      497
-    ##  7 Afghanistan      Asia  1982  39.854 12881816  978.0114  FALSE      544
-    ##  8 Afghanistan      Asia  1987  40.822 13867957  852.3959  FALSE      524
-    ##  9 Afghanistan      Asia  1992  41.674 16317921  649.3414  FALSE      476
-    ## 10 Afghanistan      Asia  1997  41.763 22227415  635.3414  FALSE      388
+    ##    country     continent  year lifeExp      pop gdpPercap africa rank_pop
+    ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl> <lgl>     <int>
+    ##  1 Afghanistan Asia       1952    28.8  8425333      779. FALSE       762
+    ##  2 Afghanistan Asia       1957    30.3  9240934      821. FALSE       706
+    ##  3 Afghanistan Asia       1962    32.0 10267083      853. FALSE       638
+    ##  4 Afghanistan Asia       1967    34.0 11537966      836. FALSE       576
+    ##  5 Afghanistan Asia       1972    36.1 13079460      740. FALSE       536
+    ##  6 Afghanistan Asia       1977    38.4 14880372      786. FALSE       497
+    ##  7 Afghanistan Asia       1982    39.9 12881816      978. FALSE       544
+    ##  8 Afghanistan Asia       1987    40.8 13867957      852. FALSE       524
+    ##  9 Afghanistan Asia       1992    41.7 16317921      649. FALSE       476
+    ## 10 Afghanistan Asia       1997    41.8 22227415      635. FALSE       388
     ## # ... with 1,694 more rows
 
 Your Turn 4
@@ -232,7 +246,7 @@ gapminder %>%
     ## # A tibble: 1 x 2
     ##   n_countries med_life_exp
     ##         <int>        <dbl>
-    ## 1          52      52.9265
+    ## 1          52         52.9
 
 Your Turn 6
 -----------
@@ -247,12 +261,12 @@ gapminder %>%
 
     ## # A tibble: 5 x 2
     ##   continent med_life_exp
-    ##      <fctr>        <dbl>
-    ## 1    Africa      47.7920
-    ## 2  Americas      67.0480
-    ## 3      Asia      61.7915
-    ## 4    Europe      72.2410
-    ## 5   Oceania      73.6650
+    ##   <fct>            <dbl>
+    ## 1 Africa            47.8
+    ## 2 Americas          67.0
+    ## 3 Asia              61.8
+    ## 4 Europe            72.2
+    ## 5 Oceania           73.7
 
 Your Turn 7
 -----------
@@ -288,13 +302,13 @@ gapminder %>%
 
     ## # A tibble: 5 x 8
     ## # Groups:   continent [5]
-    ##       country continent  year lifeExp     pop  gdpPercap   jump  rank
-    ##        <fctr>    <fctr> <int>   <dbl>   <int>      <dbl>  <dbl> <int>
-    ## 1    Bulgaria    Europe  1957  66.610 7651254  3008.6707  7.010     1
-    ## 2    Cambodia      Asia  1982  50.957 7272485   624.4755 19.737     1
-    ## 3 El Salvador  Americas  1987  63.154 4842194  4140.4421  6.550     1
-    ## 4 New Zealand   Oceania  1992  76.330 3437674 18363.3249  2.010     1
-    ## 5      Rwanda    Africa  1997  36.087 7212583   589.9445 12.488     1
+    ##   country     continent  year lifeExp     pop gdpPercap  jump  rank
+    ##   <fct>       <fct>     <int>   <dbl>   <int>     <dbl> <dbl> <int>
+    ## 1 Bulgaria    Europe     1957    66.6 7651254     3009.  7.01     1
+    ## 2 Cambodia    Asia       1982    51.0 7272485      624. 19.7      1
+    ## 3 El Salvador Americas   1987    63.2 4842194     4140.  6.55     1
+    ## 4 New Zealand Oceania    1992    76.3 3437674    18363.  2.01     1
+    ## 5 Rwanda      Africa     1997    36.1 7212583      590. 12.5      1
 
 ------------------------------------------------------------------------
 
