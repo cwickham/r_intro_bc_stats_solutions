@@ -4,7 +4,20 @@ Tidy Data (solutions)
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License, adapted from the orignal work at https://github.com/rstudio/master-the-tidyverse by RStudio. -->
 ``` r
 library(tidyverse)
+```
 
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──
+
+    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 # Toy data
 cases <- tribble(
   ~Country, ~"2011", ~"2012", ~"2013",
@@ -52,14 +65,14 @@ table1
 ```
 
     ## # A tibble: 6 x 4
-    ##       country  year  cases population
-    ##         <chr> <int>  <int>      <int>
+    ##   country      year  cases population
+    ##   <chr>       <int>  <int>      <int>
     ## 1 Afghanistan  1999    745   19987071
     ## 2 Afghanistan  2000   2666   20595360
-    ## 3      Brazil  1999  37737  172006362
-    ## 4      Brazil  2000  80488  174504898
-    ## 5       China  1999 212258 1272915272
-    ## 6       China  2000 213766 1280428583
+    ## 3 Brazil       1999  37737  172006362
+    ## 4 Brazil       2000  80488  174504898
+    ## 5 China        1999 212258 1272915272
+    ## 6 China        2000 213766 1280428583
 
 For example, it's easy to add a rate column with `mutate()`:
 
@@ -69,14 +82,14 @@ table1 %>%
 ```
 
     ## # A tibble: 6 x 5
-    ##       country  year  cases population         rate
-    ##         <chr> <int>  <int>      <int>        <dbl>
-    ## 1 Afghanistan  1999    745   19987071 0.0000372741
-    ## 2 Afghanistan  2000   2666   20595360 0.0001294466
-    ## 3      Brazil  1999  37737  172006362 0.0002193930
-    ## 4      Brazil  2000  80488  174504898 0.0004612363
-    ## 5       China  1999 212258 1272915272 0.0001667495
-    ## 6       China  2000 213766 1280428583 0.0001669488
+    ##   country      year  cases population      rate
+    ##   <chr>       <int>  <int>      <int>     <dbl>
+    ## 1 Afghanistan  1999    745   19987071 0.0000373
+    ## 2 Afghanistan  2000   2666   20595360 0.000129 
+    ## 3 Brazil       1999  37737  172006362 0.000219 
+    ## 4 Brazil       2000  80488  174504898 0.000461 
+    ## 5 China        1999 212258 1272915272 0.000167 
+    ## 6 China        2000 213766 1280428583 0.000167
 
 `table2` isn't tidy, the count column really contains two variables:
 
@@ -85,20 +98,20 @@ table2
 ```
 
     ## # A tibble: 12 x 4
-    ##        country  year       type      count
-    ##          <chr> <int>      <chr>      <int>
-    ##  1 Afghanistan  1999      cases        745
+    ##    country      year type            count
+    ##    <chr>       <int> <chr>           <int>
+    ##  1 Afghanistan  1999 cases             745
     ##  2 Afghanistan  1999 population   19987071
-    ##  3 Afghanistan  2000      cases       2666
+    ##  3 Afghanistan  2000 cases            2666
     ##  4 Afghanistan  2000 population   20595360
-    ##  5      Brazil  1999      cases      37737
-    ##  6      Brazil  1999 population  172006362
-    ##  7      Brazil  2000      cases      80488
-    ##  8      Brazil  2000 population  174504898
-    ##  9       China  1999      cases     212258
-    ## 10       China  1999 population 1272915272
-    ## 11       China  2000      cases     213766
-    ## 12       China  2000 population 1280428583
+    ##  5 Brazil       1999 cases           37737
+    ##  6 Brazil       1999 population  172006362
+    ##  7 Brazil       2000 cases           80488
+    ##  8 Brazil       2000 population  174504898
+    ##  9 China        1999 cases          212258
+    ## 10 China        1999 population 1272915272
+    ## 11 China        2000 cases          213766
+    ## 12 China        2000 population 1280428583
 
 It makes it very hard to manipulate.
 
@@ -137,11 +150,11 @@ bp_systolic2 %>%
 ```
 
     ## # A tibble: 3 x 3
-    ##   subject_id   avg_bp last_time
-    ##        <dbl>    <dbl>     <dbl>
-    ## 1          1 119.6667         3
-    ## 2          2 128.0000         2
-    ## 3          3 141.0000         1
+    ##   subject_id avg_bp last_time
+    ##        <dbl>  <dbl>     <dbl>
+    ## 1          1   120.         3
+    ## 2          2   128          2
+    ## 3          3   141          1
 
 Your Turn 3
 -----------
@@ -208,14 +221,14 @@ table4a %>%
 ```
 
     ## # A tibble: 6 x 3
-    ##       country  year  cases
-    ##         <chr> <chr>  <int>
-    ## 1 Afghanistan  1999    745
-    ## 2 Afghanistan  2000   2666
-    ## 3      Brazil  1999  37737
-    ## 4      Brazil  2000  80488
-    ## 5       China  1999 212258
-    ## 6       China  2000 213766
+    ##   country     year   cases
+    ##   <chr>       <chr>  <int>
+    ## 1 Afghanistan 1999     745
+    ## 2 Afghanistan 2000    2666
+    ## 3 Brazil      1999   37737
+    ## 4 Brazil      2000   80488
+    ## 5 China       1999  212258
+    ## 6 China       2000  213766
 
 Your Turn 5
 -----------
@@ -265,14 +278,14 @@ table2 %>%
 ```
 
     ## # A tibble: 6 x 4
-    ##       country  year  cases population
-    ## *       <chr> <int>  <int>      <int>
+    ##   country      year  cases population
+    ##   <chr>       <int>  <int>      <int>
     ## 1 Afghanistan  1999    745   19987071
     ## 2 Afghanistan  2000   2666   20595360
-    ## 3      Brazil  1999  37737  172006362
-    ## 4      Brazil  2000  80488  174504898
-    ## 5       China  1999 212258 1272915272
-    ## 6       China  2000 213766 1280428583
+    ## 3 Brazil       1999  37737  172006362
+    ## 4 Brazil       2000  80488  174504898
+    ## 5 China        1999 212258 1272915272
+    ## 6 China        2000 213766 1280428583
 
 ------------------------------------------------------------------------
 

@@ -4,6 +4,20 @@ Visualizing New House Price Index
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
 ``` r
 library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.2.1 ──
+
+    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
+
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 housing <- read_csv("data/housing_bc.csv")
 ```
 
@@ -30,7 +44,7 @@ basic_plot <- housing %>%
 basic_plot
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Your turn 2
 -----------
@@ -48,7 +62,7 @@ basic_plot +
   )
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 Your turn 3
 -----------
@@ -59,7 +73,7 @@ Add a theme to basic\_plot. Try a few and pick one you like.
 basic_plot + theme_classic()
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 Your turn 4
 -----------
@@ -70,7 +84,7 @@ Add a brewer scale to the basic\_plot.
 basic_plot + scale_color_brewer()
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-11-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
 Your turn 5
 -----------
@@ -81,7 +95,7 @@ Choose a better color palette for the brewer scale.
 basic_plot + scale_color_brewer(palette = "Set1")
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 Your turn 6
 -----------
@@ -103,7 +117,7 @@ basic_plot +
   scale_color_brewer(palette = "Set1")
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 Final plot
 ----------
@@ -125,7 +139,7 @@ basic_plot +
   theme(legend.position = c(0.75, 0.2))
 ```
 
-![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-14-1.png)
+![](06-Polishing-plots-solutions_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 Takeaways
 ---------
