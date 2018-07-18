@@ -4,6 +4,20 @@ Data Basics (solutions)
 <!-- This file by Charlotte Wickham is licensed under a Creative Commons Attribution 4.0 International License. -->
 ``` r
 library(tidyverse)
+```
+
+    ## ── Attaching packages ─────────────────────────────────── tidyverse 1.2.1 ──
+
+    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
+
+    ## ── Conflicts ────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
 library(haven)
 library(readxl)
 ```
@@ -18,37 +32,37 @@ mpg
 ```
 
     ## # A tibble: 234 x 11
-    ##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
-    ##           <chr>      <chr> <dbl> <int> <int>      <chr> <chr> <int> <int>
-    ##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
-    ##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
-    ##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
-    ##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
-    ##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
-    ##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
-    ##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
-    ##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
-    ##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
-    ## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
-    ## # ... with 224 more rows, and 2 more variables: fl <chr>, class <chr>
+    ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
+    ##    <chr>        <chr>    <dbl> <int> <int> <chr>   <chr> <int> <int> <chr>
+    ##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    
+    ##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    
+    ##  3 audi         a4         2    2008     4 manual… f        20    31 p    
+    ##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    
+    ##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    
+    ##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    
+    ##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    
+    ##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    
+    ##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    
+    ## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    
+    ## # ... with 224 more rows, and 1 more variable: class <chr>
 
 ``` r
 quakes
 ```
 
     ## # A tibble: 1,000 x 5
-    ##       lat   long depth   mag stations
-    ##     <dbl>  <dbl> <int> <dbl>    <int>
-    ##  1 -20.42 181.62   562   4.8       41
-    ##  2 -20.62 181.03   650   4.2       15
-    ##  3 -26.00 184.10    42   5.4       43
-    ##  4 -17.97 181.66   626   4.1       19
-    ##  5 -20.42 181.96   649   4.0       11
-    ##  6 -19.68 184.31   195   4.0       12
-    ##  7 -11.70 166.10    82   4.8       43
-    ##  8 -28.11 181.93   194   4.4       15
-    ##  9 -28.74 181.74   211   4.7       35
-    ## 10 -17.47 179.59   622   4.3       19
+    ##      lat  long depth   mag stations
+    ##    <dbl> <dbl> <int> <dbl>    <int>
+    ##  1 -20.4  182.   562   4.8       41
+    ##  2 -20.6  181.   650   4.2       15
+    ##  3 -26    184.    42   5.4       43
+    ##  4 -18.0  182.   626   4.1       19
+    ##  5 -20.4  182.   649   4         11
+    ##  6 -19.7  184.   195   4         12
+    ##  7 -11.7  166.    82   4.8       43
+    ##  8 -28.1  182.   194   4.4       15
+    ##  9 -28.7  182.   211   4.7       35
+    ## 10 -17.5  180.   622   4.3       19
     ## # ... with 990 more rows
 
 Your turn 1
@@ -159,19 +173,19 @@ mpg # and view in the notebook
 ```
 
     ## # A tibble: 234 x 11
-    ##    manufacturer      model displ  year   cyl      trans   drv   cty   hwy
-    ##           <chr>      <chr> <dbl> <int> <int>      <chr> <chr> <int> <int>
-    ##  1         audi         a4   1.8  1999     4   auto(l5)     f    18    29
-    ##  2         audi         a4   1.8  1999     4 manual(m5)     f    21    29
-    ##  3         audi         a4   2.0  2008     4 manual(m6)     f    20    31
-    ##  4         audi         a4   2.0  2008     4   auto(av)     f    21    30
-    ##  5         audi         a4   2.8  1999     6   auto(l5)     f    16    26
-    ##  6         audi         a4   2.8  1999     6 manual(m5)     f    18    26
-    ##  7         audi         a4   3.1  2008     6   auto(av)     f    18    27
-    ##  8         audi a4 quattro   1.8  1999     4 manual(m5)     4    18    26
-    ##  9         audi a4 quattro   1.8  1999     4   auto(l5)     4    16    25
-    ## 10         audi a4 quattro   2.0  2008     4 manual(m6)     4    20    28
-    ## # ... with 224 more rows, and 2 more variables: fl <chr>, class <chr>
+    ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl   
+    ##    <chr>        <chr>    <dbl> <int> <int> <chr>   <chr> <int> <int> <chr>
+    ##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p    
+    ##  2 audi         a4         1.8  1999     4 manual… f        21    29 p    
+    ##  3 audi         a4         2    2008     4 manual… f        20    31 p    
+    ##  4 audi         a4         2    2008     4 auto(a… f        21    30 p    
+    ##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p    
+    ##  6 audi         a4         2.8  1999     6 manual… f        18    26 p    
+    ##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p    
+    ##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p    
+    ##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p    
+    ## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p    
+    ## # ... with 224 more rows, and 1 more variable: class <chr>
 
 ``` r
 glimpse(mpg)
@@ -213,27 +227,26 @@ deaths
 ```
 
     ## # A tibble: 18 x 6
-    ##                `Lots of people`                     X__1   X__2     X__3
-    ##                           <chr>                    <chr>  <chr>    <chr>
-    ##  1 simply cannot resist writing                     <NA>   <NA>     <NA>
-    ##  2                           at                      the    top     <NA>
-    ##  3                           or                  merging   <NA>     <NA>
-    ##  4                         Name               Profession    Age Has kids
-    ##  5                  David Bowie                 musician     69     TRUE
-    ##  6                Carrie Fisher                    actor     60     TRUE
-    ##  7                  Chuck Berry                 musician     90     TRUE
-    ##  8                  Bill Paxton                    actor     61     TRUE
-    ##  9                       Prince                 musician     57     TRUE
-    ## 10                 Alan Rickman                    actor     69    FALSE
-    ## 11           Florence Henderson                    actor     82     TRUE
-    ## 12                   Harper Lee                   author     89    FALSE
-    ## 13                Zsa Zsa Gábor                    actor     99     TRUE
-    ## 14               George Michael                 musician     53    FALSE
-    ## 15                         Some                     <NA>   <NA>     <NA>
-    ## 16                         <NA> also like to write stuff   <NA>     <NA>
-    ## 17                         <NA>                     <NA> at the  bottom,
-    ## 18                         <NA>                     <NA>   <NA>     <NA>
-    ## # ... with 2 more variables: X__4 <chr>, X__5 <chr>
+    ##    `Lots of people`             X__1        X__2   X__3   X__4    X__5    
+    ##    <chr>                        <chr>       <chr>  <chr>  <chr>   <chr>   
+    ##  1 simply cannot resist writing <NA>        <NA>   <NA>   <NA>    some no…
+    ##  2 at                           the         top    <NA>   of      their s…
+    ##  3 or                           merging     <NA>   <NA>   <NA>    cells   
+    ##  4 Name                         Profession  Age    Has k… Date o… Date of…
+    ##  5 David Bowie                  musician    69     TRUE   17175   42379   
+    ##  6 Carrie Fisher                actor       60     TRUE   20749   42731   
+    ##  7 Chuck Berry                  musician    90     TRUE   9788    42812   
+    ##  8 Bill Paxton                  actor       61     TRUE   20226   42791   
+    ##  9 Prince                       musician    57     TRUE   21343   42481   
+    ## 10 Alan Rickman                 actor       69     FALSE  16854   42383   
+    ## 11 Florence Henderson           actor       82     TRUE   12464   42698   
+    ## 12 Harper Lee                   author      89     FALSE  9615    42419   
+    ## 13 Zsa Zsa Gábor                actor       99     TRUE   6247    42722   
+    ## 14 George Michael               musician    53     FALSE  23187   42729   
+    ## 15 Some                         <NA>        <NA>   <NA>   <NA>    <NA>    
+    ## 16 <NA>                         also like … <NA>   <NA>   <NA>    <NA>    
+    ## 17 <NA>                         <NA>        at the botto… <NA>    <NA>    
+    ## 18 <NA>                         <NA>        <NA>   <NA>   <NA>    too!
 
 ``` r
 iris <- read_spss("data/iris.sav")
@@ -241,18 +254,18 @@ iris
 ```
 
     ## # A tibble: 150 x 5
-    ##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+    ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species  
     ##           <dbl>       <dbl>        <dbl>       <dbl> <dbl+lbl>
-    ##  1          5.1         3.5          1.4         0.2         1
-    ##  2          4.9         3.0          1.4         0.2         1
-    ##  3          4.7         3.2          1.3         0.2         1
-    ##  4          4.6         3.1          1.5         0.2         1
-    ##  5          5.0         3.6          1.4         0.2         1
-    ##  6          5.4         3.9          1.7         0.4         1
-    ##  7          4.6         3.4          1.4         0.3         1
-    ##  8          5.0         3.4          1.5         0.2         1
-    ##  9          4.4         2.9          1.4         0.2         1
-    ## 10          4.9         3.1          1.5         0.1         1
+    ##  1          5.1         3.5          1.4         0.2 1        
+    ##  2          4.9         3            1.4         0.2 1        
+    ##  3          4.7         3.2          1.3         0.2 1        
+    ##  4          4.6         3.1          1.5         0.2 1        
+    ##  5          5           3.6          1.4         0.2 1        
+    ##  6          5.4         3.9          1.7         0.4 1        
+    ##  7          4.6         3.4          1.4         0.3 1        
+    ##  8          5           3.4          1.5         0.2 1        
+    ##  9          4.4         2.9          1.4         0.2 1        
+    ## 10          4.9         3.1          1.5         0.1 1        
     ## # ... with 140 more rows
 
 ``` r
@@ -272,18 +285,18 @@ nimbus
 ```
 
     ## # A tibble: 18,963 x 4
-    ##          date longitude latitude ozone
-    ##        <dttm>     <dbl>    <dbl> <chr>
-    ##  1 1985-10-01  -179.375    -73.5   302
-    ##  2 1985-10-01  -178.125    -73.5   302
-    ##  3 1985-10-01  -176.875    -73.5   302
-    ##  4 1985-10-01  -175.625    -73.5   302
-    ##  5 1985-10-01  -174.375    -73.5   304
-    ##  6 1985-10-01  -173.125    -73.5   304
-    ##  7 1985-10-01  -171.875    -73.5   304
-    ##  8 1985-10-01  -170.625    -73.5   304
-    ##  9 1985-10-01  -164.375    -73.5   287
-    ## 10 1985-10-01  -163.125    -73.5   287
+    ##    date                longitude latitude ozone
+    ##    <dttm>                  <dbl>    <dbl> <chr>
+    ##  1 1985-10-01 00:00:00     -179.    -73.5 302  
+    ##  2 1985-10-01 00:00:00     -178.    -73.5 302  
+    ##  3 1985-10-01 00:00:00     -177.    -73.5 302  
+    ##  4 1985-10-01 00:00:00     -176.    -73.5 302  
+    ##  5 1985-10-01 00:00:00     -174.    -73.5 304  
+    ##  6 1985-10-01 00:00:00     -173.    -73.5 304  
+    ##  7 1985-10-01 00:00:00     -172.    -73.5 304  
+    ##  8 1985-10-01 00:00:00     -171.    -73.5 304  
+    ##  9 1985-10-01 00:00:00     -164.    -73.5 287  
+    ## 10 1985-10-01 00:00:00     -163.    -73.5 287  
     ## # ... with 18,953 more rows
 
 Your Turn 7
@@ -298,27 +311,26 @@ deaths
 ```
 
     ## # A tibble: 18 x 6
-    ##                `Lots of people`                     X__1   X__2     X__3
-    ##                           <chr>                    <chr>  <chr>    <chr>
-    ##  1 simply cannot resist writing                     <NA>   <NA>     <NA>
-    ##  2                           at                      the    top     <NA>
-    ##  3                           or                  merging   <NA>     <NA>
-    ##  4                         Name               Profession    Age Has kids
-    ##  5                  David Bowie                 musician     69     TRUE
-    ##  6                Carrie Fisher                    actor     60     TRUE
-    ##  7                  Chuck Berry                 musician     90     TRUE
-    ##  8                  Bill Paxton                    actor     61     TRUE
-    ##  9                       Prince                 musician     57     TRUE
-    ## 10                 Alan Rickman                    actor     69    FALSE
-    ## 11           Florence Henderson                    actor     82     TRUE
-    ## 12                   Harper Lee                   author     89    FALSE
-    ## 13                Zsa Zsa Gábor                    actor     99     TRUE
-    ## 14               George Michael                 musician     53    FALSE
-    ## 15                         Some                     <NA>   <NA>     <NA>
-    ## 16                         <NA> also like to write stuff   <NA>     <NA>
-    ## 17                         <NA>                     <NA> at the  bottom,
-    ## 18                         <NA>                     <NA>   <NA>     <NA>
-    ## # ... with 2 more variables: X__4 <chr>, X__5 <chr>
+    ##    `Lots of people`             X__1        X__2   X__3   X__4    X__5    
+    ##    <chr>                        <chr>       <chr>  <chr>  <chr>   <chr>   
+    ##  1 simply cannot resist writing <NA>        <NA>   <NA>   <NA>    some no…
+    ##  2 at                           the         top    <NA>   of      their s…
+    ##  3 or                           merging     <NA>   <NA>   <NA>    cells   
+    ##  4 Name                         Profession  Age    Has k… Date o… Date of…
+    ##  5 David Bowie                  musician    69     TRUE   17175   42379   
+    ##  6 Carrie Fisher                actor       60     TRUE   20749   42731   
+    ##  7 Chuck Berry                  musician    90     TRUE   9788    42812   
+    ##  8 Bill Paxton                  actor       61     TRUE   20226   42791   
+    ##  9 Prince                       musician    57     TRUE   21343   42481   
+    ## 10 Alan Rickman                 actor       69     FALSE  16854   42383   
+    ## 11 Florence Henderson           actor       82     TRUE   12464   42698   
+    ## 12 Harper Lee                   author      89     FALSE  9615    42419   
+    ## 13 Zsa Zsa Gábor                actor       99     TRUE   6247    42722   
+    ## 14 George Michael               musician    53     FALSE  23187   42729   
+    ## 15 Some                         <NA>        <NA>   <NA>   <NA>    <NA>    
+    ## 16 <NA>                         also like … <NA>   <NA>   <NA>    <NA>    
+    ## 17 <NA>                         <NA>        at the botto… <NA>    <NA>    
+    ## 18 <NA>                         <NA>        <NA>   <NA>   <NA>    too!
 
 Looks like the first few rows don't contain data, but some multi-column notations. There's also some at the end.
 
@@ -330,19 +342,19 @@ deaths
 ```
 
     ## # A tibble: 10 x 6
-    ##                  Name Profession   Age `Has kids` `Date of birth`
-    ##                 <chr>      <chr> <dbl>      <lgl>          <dttm>
-    ##  1        David Bowie   musician    69       TRUE      1947-01-08
-    ##  2      Carrie Fisher      actor    60       TRUE      1956-10-21
-    ##  3        Chuck Berry   musician    90       TRUE      1926-10-18
-    ##  4        Bill Paxton      actor    61       TRUE      1955-05-17
-    ##  5             Prince   musician    57       TRUE      1958-06-07
-    ##  6       Alan Rickman      actor    69      FALSE      1946-02-21
-    ##  7 Florence Henderson      actor    82       TRUE      1934-02-14
-    ##  8         Harper Lee     author    89      FALSE      1926-04-28
-    ##  9      Zsa Zsa Gábor      actor    99       TRUE      1917-02-06
-    ## 10     George Michael   musician    53      FALSE      1963-06-25
-    ## # ... with 1 more variables: `Date of death` <dttm>
+    ##    Name               Profession   Age `Has kids` `Date of birth`    
+    ##    <chr>              <chr>      <dbl> <lgl>      <dttm>             
+    ##  1 David Bowie        musician      69 TRUE       1947-01-08 00:00:00
+    ##  2 Carrie Fisher      actor         60 TRUE       1956-10-21 00:00:00
+    ##  3 Chuck Berry        musician      90 TRUE       1926-10-18 00:00:00
+    ##  4 Bill Paxton        actor         61 TRUE       1955-05-17 00:00:00
+    ##  5 Prince             musician      57 TRUE       1958-06-07 00:00:00
+    ##  6 Alan Rickman       actor         69 FALSE      1946-02-21 00:00:00
+    ##  7 Florence Henderson actor         82 TRUE       1934-02-14 00:00:00
+    ##  8 Harper Lee         author        89 FALSE      1926-04-28 00:00:00
+    ##  9 Zsa Zsa Gábor      actor         99 TRUE       1917-02-06 00:00:00
+    ## 10 George Michael     musician      53 FALSE      1963-06-25 00:00:00
+    ## # ... with 1 more variable: `Date of death` <dttm>
 
 Another is to use the `range` argument:
 
@@ -352,16 +364,16 @@ deaths
 ```
 
     ## # A tibble: 10 x 6
-    ##                  Name Profession   Age `Has kids` `Date of birth`
-    ##                 <chr>      <chr> <dbl>      <lgl>          <dttm>
-    ##  1        David Bowie   musician    69       TRUE      1947-01-08
-    ##  2      Carrie Fisher      actor    60       TRUE      1956-10-21
-    ##  3        Chuck Berry   musician    90       TRUE      1926-10-18
-    ##  4        Bill Paxton      actor    61       TRUE      1955-05-17
-    ##  5             Prince   musician    57       TRUE      1958-06-07
-    ##  6       Alan Rickman      actor    69      FALSE      1946-02-21
-    ##  7 Florence Henderson      actor    82       TRUE      1934-02-14
-    ##  8         Harper Lee     author    89      FALSE      1926-04-28
-    ##  9      Zsa Zsa Gábor      actor    99       TRUE      1917-02-06
-    ## 10     George Michael   musician    53      FALSE      1963-06-25
-    ## # ... with 1 more variables: `Date of death` <dttm>
+    ##    Name               Profession   Age `Has kids` `Date of birth`    
+    ##    <chr>              <chr>      <dbl> <lgl>      <dttm>             
+    ##  1 David Bowie        musician      69 TRUE       1947-01-08 00:00:00
+    ##  2 Carrie Fisher      actor         60 TRUE       1956-10-21 00:00:00
+    ##  3 Chuck Berry        musician      90 TRUE       1926-10-18 00:00:00
+    ##  4 Bill Paxton        actor         61 TRUE       1955-05-17 00:00:00
+    ##  5 Prince             musician      57 TRUE       1958-06-07 00:00:00
+    ##  6 Alan Rickman       actor         69 FALSE      1946-02-21 00:00:00
+    ##  7 Florence Henderson actor         82 TRUE       1934-02-14 00:00:00
+    ##  8 Harper Lee         author        89 FALSE      1926-04-28 00:00:00
+    ##  9 Zsa Zsa Gábor      actor         99 TRUE       1917-02-06 00:00:00
+    ## 10 George Michael     musician      53 FALSE      1963-06-25 00:00:00
+    ## # ... with 1 more variable: `Date of death` <dttm>
