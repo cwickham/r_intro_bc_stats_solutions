@@ -6,34 +6,37 @@ Getting Started with R and RStudio (solutions)
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ────────────────────────────────────── tidyverse 1.2.1 ──
+    ## ── Attaching packages ─────────────────────────────────── tidyverse 1.2.1 ──
 
-    ## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
-    ## ✔ tibble  1.3.4     ✔ dplyr   0.7.4
-    ## ✔ tidyr   0.7.2     ✔ stringr 1.2.0
-    ## ✔ readr   1.1.1     ✔ forcats 0.2.0
+    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
+    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
 
-    ## ── Conflicts ───────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ────────────────────────────────────── tidyverse_conflicts() ──
     ## ✖ dplyr::filter() masks stats::filter()
     ## ✖ dplyr::lag()    masks stats::lag()
 
-R Notebooks
------------
+R Markdown
+----------
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+This is an [R Markdown](http://rmarkdown.rstudio.com) file (it has a .Rmd file extension). When you execute code within the file, the results appear beneath the code.
 
-R code goes in **code chunks**, denoted by three backticks. Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd/Crtl+Shift+Enter*.
+R code goes in **code chunks**, denoted by three backticks. Try executing this chunk by clicking the *Run* button (a small green triangle) within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter* (or *Cmd+Shift+Enter* on Mac).
 
 ``` r
 ggplot(data = mpg) +
-  geom_point(mapping = aes(x = displ, y = hwy))
+  geom_point(mapping = aes(x = cty, y = hwy), alpha = 0.2)
 ```
 
 ![](01-Getting-started-solutions_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
+Add a new code chunk
+--------------------
+
 Add a new code chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd/Ctrl+Option+I*.
 
-Here's a not very interesting chunk of R code:
+Put 2 + 2 in your new code chunk and run it.
 
 ``` r
 2 + 2
@@ -41,9 +44,12 @@ Here's a not very interesting chunk of R code:
 
     ## [1] 4
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+Knitting RMarkdown files
+------------------------
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+We'll use RMarkdown files as notebooks as we learn because we can record text, code and output.
+
+RMarkdown files are also a publication format. Try hitting the "Knit" button in the toolbar above. R runs all the code in the document from top to bottom, it collects the output and puts the code, text and output together in an HTML document - you should see it as 01-Getting-started.html in the Files pane. This document is a great way to record or share your work (you can also Knit to PDF or Word documents).
 
 Assigning variables
 -------------------
@@ -57,17 +63,17 @@ filter(mtcars, cyl == 4)
     ## # A tibble: 11 x 11
     ##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
     ##    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-    ##  1  22.8     4 108.0    93  3.85 2.320 18.61     1     1     4     1
-    ##  2  24.4     4 146.7    62  3.69 3.190 20.00     1     0     4     2
-    ##  3  22.8     4 140.8    95  3.92 3.150 22.90     1     0     4     2
-    ##  4  32.4     4  78.7    66  4.08 2.200 19.47     1     1     4     1
-    ##  5  30.4     4  75.7    52  4.93 1.615 18.52     1     1     4     2
-    ##  6  33.9     4  71.1    65  4.22 1.835 19.90     1     1     4     1
-    ##  7  21.5     4 120.1    97  3.70 2.465 20.01     1     0     3     1
-    ##  8  27.3     4  79.0    66  4.08 1.935 18.90     1     1     4     1
-    ##  9  26.0     4 120.3    91  4.43 2.140 16.70     0     1     5     2
-    ## 10  30.4     4  95.1   113  3.77 1.513 16.90     1     1     5     2
-    ## 11  21.4     4 121.0   109  4.11 2.780 18.60     1     1     4     2
+    ##  1  22.8     4 108      93  3.85  2.32  18.6     1     1     4     1
+    ##  2  24.4     4 147.     62  3.69  3.19  20       1     0     4     2
+    ##  3  22.8     4 141.     95  3.92  3.15  22.9     1     0     4     2
+    ##  4  32.4     4  78.7    66  4.08  2.2   19.5     1     1     4     1
+    ##  5  30.4     4  75.7    52  4.93  1.62  18.5     1     1     4     2
+    ##  6  33.9     4  71.1    65  4.22  1.84  19.9     1     1     4     1
+    ##  7  21.5     4 120.     97  3.7   2.46  20.0     1     0     3     1
+    ##  8  27.3     4  79      66  4.08  1.94  18.9     1     1     4     1
+    ##  9  26       4 120.     91  4.43  2.14  16.7     0     1     5     2
+    ## 10  30.4     4  95.1   113  3.77  1.51  16.9     1     1     5     2
+    ## 11  21.4     4 121     109  4.11  2.78  18.6     1     1     4     2
 
 And the code in this chunk?
 
