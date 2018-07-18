@@ -1,6 +1,10 @@
 ---
 title: "Tidying New House Price Index"
-output: html_notebook
+output:
+  github_document: 
+    df_print: tibble
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup}
